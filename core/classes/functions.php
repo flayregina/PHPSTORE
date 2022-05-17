@@ -2,6 +2,11 @@
 
 namespace core\classes;
 
-class functions
+class Functions
 {
+
+    public function teste()
+    {
+        echo 'Olá!';
+    }
 }

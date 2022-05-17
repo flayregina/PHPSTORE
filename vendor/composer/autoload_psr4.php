@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Lojaweb\\Phpstore\\' => array($baseDir . '/src'),
+    'core\\' => array($baseDir . '/core'),
 );
