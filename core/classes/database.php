@@ -60,11 +60,9 @@ class Database
             if (!empty($parametros)) {
                 $executar = $this->ligacao->prepare($sql);
                 $executar->execute($parametros);
-                $resultados = $executar->fetchAll(PDO::FETCH_CLASS);
             } else {
                 $executar = $this->ligacao->prepare($sql);
                 $executar->execute($parametros);
-                $resultados = $executar->fetchAll(PDO::FETCH_CLASS);
             }
         } catch (PDOException $e) {
 
@@ -74,9 +72,6 @@ class Database
 
         // desliga da bd
         $this->desligar();
-
-        // devolve os resultados obtidos
-        return $resultados;
     }
 
     //=========================================

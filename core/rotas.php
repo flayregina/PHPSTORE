@@ -4,7 +4,7 @@
 $rotas = [
     'inicio' => 'main@index',
     'loja' => 'main@loja',
-    'carrinho' => 'loja@carrinho'
+
 ];
 
 // define ação por defeito
