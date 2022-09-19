@@ -2,7 +2,9 @@
 
 namespace core\classes;
 
-class Functions
+use Exception;
+
+class Store
 {
     //=================================================
     public static function Layout($estruturas, $dados = null)
@@ -18,14 +20,16 @@ class Functions
         }
 
         // apresentar as views da aplicação
-        foreach ($estruturas as $estruturas) {
-            include("../core/views/$estruturas.php");
+        foreach ($estruturas as $estrutura) {
+            include("../core/views/$estrutura.php");
         }
     }
+
+    //=================================================
+    public static function clienteLogado()
+    {
+
+        // verifica se existe um cliente com sucesso
+        return isset($_SESSION['cliente']);
+    }
 }
-/*
-html_header.php
-nav_bar.php
-inicio.php
-html_footer.php
-*/
