@@ -1,1 +1,11 @@
 /* app.css */
+
+.navegacao {
+    background-color: rgb(154, 171, 194);
+    color: black
+}
+
+.rodape {
+    background-color: rgb(12, 79, 99);
+    color: white
+}
