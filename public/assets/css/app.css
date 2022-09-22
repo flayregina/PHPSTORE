@@ -9,3 +9,15 @@
     background-color: rgb(12, 79, 99);
     color: white
 }
+
+.nav-item {
+    text-decoration: none;
+    color: white;
+    margin: 0px 10px;
+}
+
+.nav-item:hover {
+    text-decoration: underline;
+    color: white;
+
+}

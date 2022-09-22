@@ -1,0 +1,20 @@
+
+
+
+
+CLIENTES:
+--------------
+
+	id_cliente 
+	email 
+	senha 
+	nome_completo 
+	morada 
+	cidade 
+	telefone 
+	purl 
+	activo 
+	created_at 
+	updated_at 
+	deleted_at 
+	   
