@@ -81,9 +81,9 @@ class Main
         // verifica na base de dados se existe cliente com o mesmo email
         $bd = new Database();
         $parametros = [
-            ':e' => strtolower(trim($_POST['text_email']))
+            ':email' => strtolower(trim($_POST['text_email']))
         ];
-        $resultados = $bd->select("SELECT email FROM clientes WHERE email = :e", $parametros);
+        $resultados = $bd->select("SELECT email FROM clientes WHERE email = :email", $parametros);
 
         // se o cliente ja existe...
         if (count($resultados) != 0) {
@@ -92,11 +92,43 @@ class Main
             return;
         }
 
+        // cliente pronto para ser inserido na base de dados
+        $purl = Store::criarHash();
+
+        $parametros = [
+            ':email' => strtolower(trim($_POST['text_email'])),
+            ':senha' => password_hash($_POST['text_senha_1'], PASSWORD_DEFAULT),
+            ':nome_completo' => trim($_POST['text_nome_completo']),
+            ':morada' => trim($_POST['text_morada']),
+            ':cidade' => trim($_POST['text_cidade']),
+            ':telefone' => trim($_POST['text_telefone']),
+            ':purl' => $purl,
+            ':ativo' => 0
+        ];
+        $bd->insert("
+            INSERT INTO clientes VALUES(
+                0,
+                :email,
+                :senha,
+                :nome_completo,
+                :morada,
+                :cidade,
+                :telefone,
+                :purl,
+                :ativo,
+                NOW(),
+                NOW(),
+                NULL
+            )
+        ", $parametros);
+
+        // criar o link purl para enviar por email
+        $link_purl = "http://localhost/PHPSTORE/public/?a=confirmar_email&purl=$purl";
 
         /*
 
         3. registro
-        
+
            criar um purl
            guardar os dados na tabela cliente
            enviar um email com o purl para o cliente
